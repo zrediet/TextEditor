@@ -1,0 +1,56 @@
+﻿<dx:ThemedWindow 
+    x:Class="TextEditor.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+    Title="Rich Text Box Editor" Height="800" Width="1000" ResizeMode="NoResize" TitleAlignment="Center">
+    <DockPanel>
+        <dxr:RibbonControl DockPanel.Dock="Top" RibbonStyle="Office2019">
+            <dxr:RibbonControl.ToolbarItems>
+                <dxb:BarButtonItemLink BarItemName="newItem"/>
+            </dxr:RibbonControl.ToolbarItems>
+            <dxr:RibbonDefaultPageCategory>
+                <dxr:RibbonPage Caption="Home">
+                    <dxr:RibbonPageGroup Caption="File">
+                        <dxb:BarButtonItem x:Name="newItem" Content="New" Glyph="{dx:DXImage 'SvgImages/Actions/New.svg'}" ItemClick="newItem_ItemClick" KeyTip="New Document" KeyGesture="Ctrl+N" RibbonStyle="Large"/>
+                        <dxb:BarItemSeparator/>
+                        <dxb:BarButtonItem Content="Open" KeyGesture="Ctrl+O" LargeGlyph="{dx:DXImage SvgImages/Actions/Open2.svg}" ItemClick="BarButtonItem_ItemClick"/>
+                        <dxb:BarButtonItem x:Name="saveAsItem" Content="Save As" LargeGlyph="{dx:DXImage 'SvgImages/Save/SaveAs.svg'}" ItemClick="saveAsItem_ItemClick" KeyGesture="Ctrl+S"/>
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
+                <dxr:RibbonPage Caption="Edit">
+                    <dxr:RibbonPageGroup Caption="Edit">
+                        <dxb:BarButtonItem x:Name="copyItem" Content="Copy" Glyph="{dx:DXImage SvgImages/DiagramIcons/Copy.svg}" KeyTip="New Document" KeyGesture="Ctrl+C" RibbonStyle="Large" ItemClick="copyItem_ItemClick"/>
+                        <dxb:BarButtonItem x:Name="cutItem" Content="Cut" Glyph="{dx:DXImage SvgImages/DiagramIcons/Cut.svg}" ItemClick="cutItem_ItemClick" KeyTip="New Document" KeyGesture="Ctrl+X" RibbonStyle="Large"/>
+                        <dxb:BarButtonItem x:Name="pasteItem" Content="Paste" Glyph="{dx:DXImage SvgImages/DiagramIcons/Paste.svg}" ItemClick="pasteItem_ItemClick" KeyTip="New Document" KeyGesture="Ctrl+V" RibbonStyle="Large"/>
+                        <dxb:BarItemSeparator/>
+                        <dxb:BarButtonItem Content="Select All" KeyGesture="Ctrl+A" Glyph="{dx:DXImage SvgImages/RichEdit/SelectTable.svg}" GlyphSize="Large" GlyphAlignment="Top" OverridesDefaultStyle="False" LargeGlyph="{dx:DXImage SvgImages/RichEdit/SelectTable.svg}" ItemClick="BarButtonItem_ItemClick_1"/>
+                    </dxr:RibbonPageGroup>
+                </dxr:RibbonPage>
+            </dxr:RibbonDefaultPageCategory>
+        </dxr:RibbonControl>
+        <dxr:RibbonStatusBarControl DockPanel.Dock="Bottom">
+            <dxr:RibbonStatusBarControl.RightItems>
+                <dxb:BarButtonItem x:Name="printItem" Content="Print" Glyph="{dx:DXImage 'SvgImages/Print/Print.svg'}"/>
+            </dxr:RibbonStatusBarControl.RightItems>
+        </dxr:RibbonStatusBarControl>
+        <dx:DXTabControl x:Name="MainTabControl" Width="1016" ClipToBounds="True" SnapsToDevicePixels="True">
+            <dx:DXTabItem Header="Tab 1">
+                <Grid Background="#00000000">
+                    <RichTextBox>
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text="Sample Text for tab 1 goes here"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </Grid>
+            </dx:DXTabItem>
+           
+        </dx:DXTabControl>
+
+    </DockPanel>
+</dx:ThemedWindow>
